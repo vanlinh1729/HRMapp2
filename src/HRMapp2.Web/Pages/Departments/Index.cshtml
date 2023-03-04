@@ -1,0 +1,26 @@
+@page
+@model HRMapp2.Web.Pages.Departments.Index
+
+@section scripts
+{
+    <abp-script src="/Pages/Departments/Index.js" />
+}
+
+<abp-card>
+    <abp-card-header>
+        <abp-row>
+            <abp-column size-md="_6">
+                <abp-card-title>Departments</abp-card-title>
+            </abp-column>
+            <abp-column size-md="_6" class="text-right">
+                <abp-button id="NewDepartmentButton"
+                            text="New Department"
+                            icon="plus"
+                            button-type="Primary"/>
+            </abp-column>
+        </abp-row>
+    </abp-card-header>
+    <abp-card-body>
+        <abp-table striped-rows="true" id="DepartmentsTable"></abp-table>
+    </abp-card-body>
+</abp-card>

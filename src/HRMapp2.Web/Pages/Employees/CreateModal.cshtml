@@ -1,0 +1,38 @@
+@page
+@using HRMapp2.Departments
+@using HRMapp2.Localization
+@using HRMapp2.Employees
+@using HRMapp2.Projects
+@using Microsoft.Extensions.Localization
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal
+@model HRMapp2.Web.Pages.Employees.CreateModal
+
+
+@{
+    Layout = null;
+}
+
+<form method="post" id="CreateEmployeeModal" asp-page="/Employees/CreateModal">
+    <abp-modal>
+        <abp-modal-header title="New Employee"></abp-modal-header>
+        <abp-modal-body>
+            <abp-tabs name="create-category-modal-tabs">
+                <abp-tab title="Employee Information" class="mt-3">
+                    <div id="category-information-wrapper" class="mt-3">
+                        <abp-input asp-for="Employee.EmployeeName" label="Employee Name"/>
+                        <abp-select asp-items="@Model.Departments" asp-for="Employee.DepartmentId" label="Department">
+                            <option value="" disabled="disabled">Choose Department...</option>
+                            </abp-select>
+                        <abp-input asp-for="Employee.EmployeeAddress" label="Employee Address"/>
+                        <abp-input asp-for="Employee.EmployeeSupervisor" label="Employee Supervisor"/>
+                        <abp-input asp-for="Employee.EmployeeSex" label="EmployeeSex"/>
+                        <abp-input asp-for="Employee.EmployeeDob" type="Date" label="Employee DOB"/>
+                        <abp-input asp-for="Employee.EmployeeWeeklyHours" type="int" label="Employee Weekly Hours"/>
+               
+                    </div>
+                </abp-tab>
+            </abp-tabs>
+        </abp-modal-body>
+        <abp-modal-footer buttons="@(AbpModalButtons.Cancel|AbpModalButtons.Save)"></abp-modal-footer>
+    </abp-modal>
+</form>

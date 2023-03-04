@@ -1,0 +1,12 @@
+{
+  "culture": "en",
+  "texts": {
+    "Menu:Home": "Home",
+    "Welcome": "Welcome",
+    "LongWelcomeMessage": "Welcome to the application. This is a startup project based on the ABP framework. For more information, visit abp.io.",
+    "Enum:DepartmentId:868caf66-d2cf-ca56-c928-3a09a90afb6c": "Phong 01",
+    "Enum:DepartmentId:e8789e7c-e12a-f9ef-ae2e-3a09a90b1de1": "Phong 02",
+    "Enum:DepartmentId:bf3c3200-0b21-fcb9-3e83-3a09a95d4b76": "Phong 03",
+    "Enum:DepartmentId:a7997621-60f3-bad5-c189-3a09ad55ce80": "Phong 04"
+  }
+}

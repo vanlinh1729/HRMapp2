@@ -1,0 +1,27 @@
+@page
+@model HRMapp2.Web.Pages.Departments.Index
+
+@section scripts
+{
+    <abp-script src="/Pages/Employees/Index.js" />
+}
+
+<abp-card>
+    <abp-card-header>
+        <abp-row>
+            <abp-column size-md="_6">
+                <abp-card-title>Employees</abp-card-title>
+            </abp-column>
+            <abp-column size-md="_6" class="text-right">
+                <abp-button id="NewEmployeeButton"
+                            text="New Employee"
+                            icon="plus"
+                            button-type="Primary"/>
+            </abp-column>
+          x
+        </abp-row>
+    </abp-card-header>
+    <abp-card-body>
+        <abp-table striped-rows="true" id="EmployeesTable"></abp-table>
+    </abp-card-body>
+</abp-card>
