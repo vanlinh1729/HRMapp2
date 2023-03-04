@@ -12,8 +12,8 @@ $(function () {
             serverSide: true,
             paging: true,
             order: [[1, "asc"]],
-            searching: true,
-            searchParams: "queryName",
+            searching: false,
+          /*  searchParams: "queryName",*/
             scrollX: true,
             ajax: abp.libs.datatables.createAjax(employeeService.getList),
             columnDefs: [
@@ -63,7 +63,7 @@ $(function () {
                         
                     }
                 },
-                {
+                /*{
                     title: 'Employee Address',
                     data: "employeeAddress"
                 },
@@ -83,7 +83,7 @@ $(function () {
                 {
                     title: 'Employee Weekly Hours',
                     data: "employeeWeeklyHours"
-                }
+                }*/
                
                 
 

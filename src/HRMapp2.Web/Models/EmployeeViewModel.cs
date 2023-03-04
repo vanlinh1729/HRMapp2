@@ -9,7 +9,6 @@ public class EmployeeViewModel
 	
 	public string EmployeeName { get; set; }
 	public string DepartmentName { get; set; }
-	public Guid DepartmentId { get; set; }
 	public string EmployeeAddress { get; set; }
 	public string EmployeeSupervisor { get; set; }
 	public string EmployeeSex { get; set; }
