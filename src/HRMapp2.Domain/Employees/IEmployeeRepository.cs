@@ -12,8 +12,11 @@ public interface IEmployeeRepository : IRepository<Employee, Guid>
         string sorting,
         int skipCount,
         int maxResultCount,
+        string queryName, 
         CancellationToken cancellationToken = default
     );
 
+    /*
     Task<EmployeeWithDetails> GetAsync(Guid id, CancellationToken cancellationToken = default);
+*/
 }

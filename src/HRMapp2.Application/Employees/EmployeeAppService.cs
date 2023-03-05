@@ -11,12 +11,12 @@ using Volo.Abp.Domain.Repositories;
 
 namespace HRMapp2.Employees
 {
-	public class EmployeeAppService :  CrudAppService<Employee,EmployeeDto, Guid,PagedAndSortedResultRequestDto, CreateUpdateEmployeeDto, CreateUpdateEmployeeDto>,IEmployeeAppService
+	public class EmployeeAppService :  CrudAppService<Employee,EmployeeDto, Guid,EmployeeGetListInput , CreateUpdateEmployeeDto, CreateUpdateEmployeeDto>,IEmployeeAppService
 	{
-		private IRepository<Employee,Guid> _repository { get; set; }
+		private IEmployeeRepository _repository { get; set; }
 		private IRepository<Department,Guid> _repositoryDepartment { get; set; }
 		
-		public EmployeeAppService(IRepository<Employee, Guid> repository,IRepository<Department,Guid> repositoryDepartment) : base(repository)
+		public EmployeeAppService(IEmployeeRepository repository,IRepository<Department,Guid> repositoryDepartment) : base(repository)
 		{
 			_repository = repository;
 			_repositoryDepartment = repositoryDepartment;
@@ -27,6 +27,24 @@ namespace HRMapp2.Employees
 			var obj = await _repositoryDepartment.GetListAsync();
 			return new ListResultDto<SelectDto>( ObjectMapper.Map<List<Department>,List<SelectDto>>(obj));
 		}
+
+		/*
+		public override Task<PagedResultDto<EmployeeDto>> GetListAsync(PagedAndSortedResultRequestDto input)
+		{
+			return base.GetListAsync(input);
+		}
+		*/
+
+		public override async Task<PagedResultDto<EmployeeDto>> GetListAsync(EmployeeGetListInput input)
+		{
+			
+			var employees = await _repository.GetListAsync(input.Sorting, input.SkipCount, 
+				input.MaxResultCount, input.queryName);
+			var totalCount = await _repository.CountAsync();
+
+			return new PagedResultDto<EmployeeDto>(totalCount, ObjectMapper.Map<List<EmployeeWithDetails>, List<EmployeeDto>>(employees));
+		}
+
 
 		/*public Task<List<EmployeeWithDetails>> GetListAsync()
 		{

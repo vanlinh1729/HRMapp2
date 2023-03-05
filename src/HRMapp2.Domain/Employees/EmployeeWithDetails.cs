@@ -5,6 +5,7 @@ namespace HRMapp2.Employees;
 
 public class EmployeeWithDetails
 {
+
 	public Guid Id { get; set; }
     public string EmployeeName { get; set; }
     public string DepartmentName { get; set; }

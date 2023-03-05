@@ -18,7 +18,7 @@ using Volo.Abp.Domain.Repositories;
 
 namespace HRMapp2.Employees
 {
-	public class EmployeeRepository : EfCoreRepository<HRMapp2DbContext, Employee, Guid>, IEmployeeRepository, IRepository
+	public class EmployeeRepository : EfCoreRepository<HRMapp2DbContext, Employee, Guid>, IEmployeeRepository
 	{
 		public EmployeeRepository(IDbContextProvider<HRMapp2DbContext> dbContextProvider) : base(dbContextProvider)
 		{
@@ -29,14 +29,15 @@ namespace HRMapp2.Employees
 			string sorting,
 			int skipCount,
 			int maxResultCount,
-			/*string queryName,*/
+			string queryName,
 			CancellationToken cancellationToken = default
 		)
 		{
 			var query = await ApplyFilterAsync();
 
 			return await query
-				/*.WhereIf(queryName.IsNullOrWhiteSpace(), e=>e.EmployeeName.Contains(queryName))*/
+				.WhereIf(!queryName.IsNullOrWhiteSpace(),
+					e=>e.EmployeeName.ToLower().Contains(queryName.ToLower()))
 				.OrderBy(!string.IsNullOrWhiteSpace(sorting) ? sorting : nameof(Employee.EmployeeName))
 				.PageBy(skipCount, maxResultCount)
 				.ToListAsync(GetCancellationToken(cancellationToken));

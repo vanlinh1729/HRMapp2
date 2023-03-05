@@ -9,9 +9,12 @@ using Volo.Abp.Application.Services;
 namespace HRMapp2.Employees
 {
 	public interface IEmployeeAppService : 
-		ICrudAppService<EmployeeDto, Guid, PagedAndSortedResultRequestDto, CreateUpdateEmployeeDto, CreateUpdateEmployeeDto>, IApplicationService
+		ICrudAppService<EmployeeDto, Guid, EmployeeGetListInput, CreateUpdateEmployeeDto, CreateUpdateEmployeeDto>, IApplicationService
 	{
 		Task<ListResultDto<SelectDto>> GetListDepartmentAsync();
+		Task<PagedResultDto<EmployeeDto>> GetListAsync(EmployeeGetListInput input);
+		
+
 		/*
 		Task<DepartmentLookupDto> GetDepartmentLookupAsync();
 		*/

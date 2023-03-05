@@ -4,7 +4,14 @@ $(function () {
     var viewModal = new abp.ModalManager(abp.appPath + 'Employees/ViewModal');
 
     var l = abp.localization.getResource('HRMapp2');
-    var queryName = "";
+    var query = () => {
+        return {'queryName': $("#NameSearch").val()}
+    }
+    $("#NameSearch").on("input", (n) => {
+        console.log("A")
+        dataTable.ajax.reload();
+    })
+
     var employeeService = hRMapp2.employees.employee;
 
     var dataTable = $('#EmployeesTable').DataTable(
@@ -15,7 +22,7 @@ $(function () {
             searching: false,
           /*  searchParams: "queryName",*/
             scrollX: true,
-            ajax: abp.libs.datatables.createAjax(employeeService.getList),
+            ajax: abp.libs.datatables.createAjax(employeeService.getList, query),
             columnDefs: [
                 {
                     title: 'Actions',
