@@ -64,11 +64,7 @@ $(function () {
                 },
                 {
                     title: 'Department Name',
-                    data: "departmentId",
-                    render: function (data) {
-                        return l('Enum:DepartmentId:'+data);
-                        
-                    }
+                    data: "departmentName"
                 },
                 /*{
                     title: 'Employee Address',

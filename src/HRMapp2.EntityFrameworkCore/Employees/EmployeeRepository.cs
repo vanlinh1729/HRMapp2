@@ -56,18 +56,21 @@ namespace HRMapp2.Employees
 		{
 			var dbContext = await GetDbContextAsync();
 
-			return (await GetDbSetAsync()).Include(x=>x.Department)
+			return (await GetDbSetAsync())
+				.Include(x=>x.Department)
+				.Join(dbContext.Set<Department>(),employee => employee.DepartmentId ,department => department.Id
+					,(employee, department) => new {employee, department})
 				.Select(x => new EmployeeWithDetails()
 				{
-					Id = x.Id,
-					EmployeeName = x.EmployeeName,
-					DepartmentName = x.Department.DepartmentName,
-					DepartmentId = x.DepartmentId,
-					EmployeeAddress = x.EmployeeAddress,
-					EmployeeSupervisor = x.EmployeeSupervisor,
-					EmployeeSex = x.EmployeeSex,
-					EmployeeDob = x.EmployeeDob,
-					EmployeeWeeklyHours = x.EmployeeWeeklyHours,
+					Id = x.employee.Id,
+					EmployeeName = x.employee.EmployeeName,
+					DepartmentName = x.department.DepartmentName,
+					DepartmentId = x.employee.DepartmentId,
+					EmployeeAddress = x.employee.EmployeeAddress,
+					EmployeeSupervisor = x.employee.EmployeeSupervisor,
+					EmployeeSex = x.employee.EmployeeSex,
+					EmployeeDob = x.employee.EmployeeDob,
+					EmployeeWeeklyHours = x.employee.EmployeeWeeklyHours,
 					
 					
 				});
