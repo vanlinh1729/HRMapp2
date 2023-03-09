@@ -1,8 +1,13 @@
 @page
 @using HRMapp2.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.AspNetCore.Mvc.TagHelpers
 @using Microsoft.Extensions.Localization
 @using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Tab
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Table
 @model HRMapp2.Web.Pages.Employees.ViewModal
+@inject IHtmlLocalizer<HRMapp2Resource> L
 
 
 @{
@@ -11,42 +16,42 @@
 
 <form method="post"  asp-page="/Employees/ViewModal">
     <abp-modal>
-        <abp-modal-header  title="Employee Information"></abp-modal-header>
+        <abp-modal-header  title="@L["Employee Information"].Value"></abp-modal-header>
         <abp-modal-body>
             <abp-tabs name="view-employee-modal-tabs">
-                <abp-tab title="Employee Information" class="mt-3">
+                <abp-tab title="@L["Employee Information"].Value" class="mt-3">
 
                       
                        <div class="card-body pt-0">
                                    <table class="table table-bordered">
                                      <tr>
-                                       <th width="30%">Employee Name</th>
+                                       <th width="30%">@L["Employee Name"]</th>
                                          <td>@Model.EmployeeViewModel.EmployeeName</td>
                                      </tr>
 
                                      <tr>
-                                       <th width="30%">Address</th>
+                                       <th width="30%">@L["Employee Address"]</th>
                                          <td>@Model.EmployeeViewModel.EmployeeAddress</td>
                                      </tr>
                                        <tr>
-                                           <th width="30%">Supervisor</th>
+                                           <th width="30%">@L["Employee Supervisor"]</th>
                                            <td>@Model.EmployeeViewModel.EmployeeSupervisor</td>
                                        </tr>
                                        <tr>
-                                           <th width="30%">Gender</th>
+                                           <th width="30%">@L["Employee Sex"]</th>
                                            <td>@Model.EmployeeViewModel.EmployeeSex</td>
                                        </tr>
                                        <tr>
-                                           <th width="30%">DOB</th>
+                                           <th width="30%">@L["Employee DOB"]</th>
                                            <td>@Model.EmployeeViewModel.EmployeeDob</td>
                                        </tr>
                                        <tr>
-                                           <th width="30%">Weekly Hours</th>
+                                           <th width="30%">@L["Employee Weekly Hours"]</th>
                                            <td>@Model.EmployeeViewModel.EmployeeWeeklyHours</td>
                                        </tr>
                                    </table>
                                  </div>
-                               </div>
+  
                         
                       
                 </abp-tab>

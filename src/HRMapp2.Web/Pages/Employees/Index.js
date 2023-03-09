@@ -25,32 +25,32 @@ $(function () {
             ajax: abp.libs.datatables.createAjax(employeeService.getList, query),
             columnDefs: [
                 {
-                    title: 'Actions',
+                    title: l('Employee:Actions'),
                     rowAction: {
                         items:
                             [
                                 {
-                                    text: 'Edit',
+                                    text: l('Employee:Edit'),
                                     action: function (data) {
                                         editModal.open({ id: data.record.id });
                                     }
                                 },
                                 {
-                                    text: 'View',
+                                    text: l('Employee:View'),
                                     action: function (data) {
                                         viewModal.open({ id: data.record.id });
                                     }
                                 },
                                 {
-                                    text: 'Delete',
+                                    text: l('Employee:Delete'),
                                     confirmMessage: function (data) {
-                                        return "Are you sure to delete the employee '" + data.record.employeeName  +"'?";
-                                    },
+                                        return "Bạn có muốn xoá nhân viên '" + data.record.employeeName  +"'?";
+                                    },  
                                     action: function (data) {
                                         employeeService
                                             .delete(data.record.id)
                                             .then(function() {
-                                                abp.notify.info("Successfully deleted!");
+                                                abp.notify.info("Xoá thành công!");
                                                 dataTable.ajax.reload();
                                             });
                                     }
@@ -59,11 +59,11 @@ $(function () {
                     }
                 },
                 {
-                    title: 'Employee Name',
+                    title: l('Employee:Employee Name'),
                     data: "employeeName"
                 },
                 {
-                    title: 'Department Name',
+                    title: l('Employee:Department Name'),
                     data: "departmentName"
                 },
                 /*{

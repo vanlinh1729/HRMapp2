@@ -1,6 +1,8 @@
 @page
+@using HRMapp2.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
 @model HRMapp2.Web.Pages.Departments.Index
-
+@inject IHtmlLocalizer<HRMapp2Resource> L
 @section scripts
 {
     <abp-script src="/Pages/Departments/Index.js" />
@@ -10,11 +12,11 @@
     <abp-card-header>
         <abp-row>
             <abp-column size-md="_6">
-                <abp-card-title>Departments</abp-card-title>
+                <abp-card-title>@L["Department"].Value</abp-card-title>
             </abp-column>
             <abp-column size-md="_6" class="text-right">
                 <abp-button id="NewDepartmentButton"
-                            text="New Department"
+                            text="@L["New Department"].Value"
                             icon="plus"
                             button-type="Primary"/>
             </abp-column>

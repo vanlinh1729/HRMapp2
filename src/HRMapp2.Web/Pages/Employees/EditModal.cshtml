@@ -1,9 +1,10 @@
 @page
 @using HRMapp2.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
 @using Microsoft.Extensions.Localization
 @using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal
 @model HRMapp2.Web.Pages.Employees.EditModal
-
+@inject IHtmlLocalizer<HRMapp2Resource> L
 
 @{
     Layout = null;
@@ -11,21 +12,21 @@
 
 <form method="post"  asp-page="/Employees/EditModal">
     <abp-modal>
-        <abp-modal-header title="Update"></abp-modal-header>
+        <abp-modal-header title="@L["Update"].Value"></abp-modal-header>
         <abp-modal-body>
             <abp-tabs name="edit-employee-modal-tabs">
-                <abp-tab title="Employee Information" class="mt-3">
+                <abp-tab title="@L["Employee Information"].Value" class="mt-3">
                     <div id="employee-information-wrapper" class="mt-3">
                         <abp-input hidden=""  asp-for="Id" label=" "></abp-input>
-                         <abp-input asp-for="EditEmployee.EmployeeName" label="Employee Name"/>
-                         <abp-select asp-items="@Model.Departments" asp-for="EditEmployee.DepartmentId" label="Department">
-                             <option value="" disabled="disabled">Choose Department...</option>
+                         <abp-input asp-for="EditEmployee.EmployeeName" label="@L["Employee Name"].Value"/>
+                         <abp-select asp-items="@Model.Departments" asp-for="EditEmployee.DepartmentId" label="@L["Department"].Value">
+                             <option value="" disabled="disabled">Chọn phòng ban...</option>
                              </abp-select>
-                         <abp-input asp-for="EditEmployee.EmployeeAddress" label="Employee Address"/>
-                         <abp-input asp-for="EditEmployee.EmployeeSupervisor" label="Employee Supervisor"/>
-                         <abp-input asp-for="EditEmployee.EmployeeSex" label="EmployeeSex"/>
-                         <abp-input asp-for="EditEmployee.EmployeeDob" type="Date" label="Employee DOB"/>
-                         <abp-input asp-for="EditEmployee.EmployeeWeeklyHours" type="int" label="Employee Weekly Hours"/>
+                         <abp-input asp-for="EditEmployee.EmployeeAddress" label="@L["Employee Address"].Value"/>
+                         <abp-input asp-for="EditEmployee.EmployeeSupervisor" label="@L["Employee Supervisor"].Value"/>
+                         <abp-input asp-for="EditEmployee.EmployeeSex" label="@L["Employee Sex"].Value"/>
+                         <abp-input asp-for="EditEmployee.EmployeeDob" type="Date" label="@L["Employee DOB"].Value"/>
+                         <abp-input asp-for="EditEmployee.EmployeeWeeklyHours" type="int" label="@L["Employee Weekly Hours"].Value"/>
                     </div>
                 </abp-tab>
             </abp-tabs>

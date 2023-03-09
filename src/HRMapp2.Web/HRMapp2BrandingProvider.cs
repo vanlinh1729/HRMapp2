@@ -7,4 +7,5 @@ namespace HRMapp2.Web;
 public class HRMapp2BrandingProvider : DefaultBrandingProvider
 {
     public override string AppName => "HRMapp2";
+    
 }

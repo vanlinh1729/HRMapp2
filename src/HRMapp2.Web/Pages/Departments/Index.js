@@ -3,6 +3,7 @@ $(function () {
     var editModal = new abp.ModalManager(abp.appPath + 'Departments/EditModal');
     var viewModal = new abp.ModalManager(abp.appPath + 'Departments/ViewModal');
 
+    var l = abp.localization.getResource('HRMapp2');
     var departmentService = hRMapp2.departments.department;
 
     var dataTable = $('#DepartmentsTable').DataTable(
@@ -15,32 +16,32 @@ $(function () {
             ajax: abp.libs.datatables.createAjax(departmentService.getList),
             columnDefs: [
                 {
-                    title: 'Actions',
+                    title: l('Department:Actions'),
                     rowAction: {
                         items:
                             [
                                 {   
-                                    text: 'Edit',
+                                    text: l('Department:Edit'),
                                     action: function (data) {
                                         editModal.open({ id: data.record.id });
                                     }
                                 },
                                 {
-                                    text: 'View',
+                                    text: l('Department:View'),
                                     action: function (data) {
                                         viewModal.open({ id: data.record.id });
                                     }
                                 },
                                 {
-                                    text: 'Delete',
+                                    text: l('Department:Delete'),
                                     confirmMessage: function (data) {
-                                        return "Are you sure to delete the department '" + data.record.departmentName  +"'?";
+                                        return "Bạn có muốn xoá phòng ban '" + data.record.departmentName  +"'?";
                                     },
                                     action: function (data) {
                                         departmentService
                                             .delete(data.record.id)
                                             .then(function() {
-                                                abp.notify.info("Successfully deleted!");
+                                                abp.notify.info("Xoá thành công!");
                                                 dataTable.ajax.reload();
                                             });
                                     }
@@ -49,11 +50,11 @@ $(function () {
                     }
                 },
                 {
-                    title: 'Department Name',
+                    title: l('Department:Department Name'),
                     data: "departmentName"
                 },
                 {
-                    title: 'Department Manager',
+                    title: l('Department:Department Manager'),
                     data: "departmentManager"
                 },
                /* {
