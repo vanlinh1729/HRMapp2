@@ -3,7 +3,7 @@
   "texts": {
     "Menu:Home": "Trang chủ",
     "Welcome": "Chào mừng bạn",
-    "LongWelcomeMessage": "Chào mừng bạn đến ứng dụng. Đây là một dự án khởi nghiệp dựa trên khung ABP. Để biết thêm thông tin, hãy truy cập abp.io.",
+    "LongWelcomeMessage": "Chào mừng bạn đến ứng dụng. Đây là một dự án dựa trên khung ABP. Để biết thêm thông tin, hãy truy cập abp.io.",
     "Permission:Subject": "Môn Học",
     "Permission:Create": "Tạo mới",
     "Permission:Update": "Chỉnh sửa",
@@ -45,7 +45,7 @@
     "Department Name": "Tên phòng ban",
     "Department Manager": "Quản lý phòng ban",
     "Manager Start Date": "Ngày bắt đầu quản lý",
-    "Department Location": "Vị trí phòng ban",
+    "Department Location": "Vị trí phòng ban"
     
     
   }

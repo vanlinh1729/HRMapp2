@@ -33,9 +33,9 @@ public class HRMapp2MenuContributor : IMenuContributor
                 "~/",
                 icon: "fas fa-home",
                 order: 0
-            )
+            ));
 
-        );
+        
 
         context.Menu.Items.Insert(
             1,
@@ -155,7 +155,7 @@ public class HRMapp2MenuContributor : IMenuContributor
                 "Contracts",
                 l["Hợp đồng"],
                 "~/",
-                icon: "fas fa-pen"
+                    icon: "fas fa-pen"
 
             )
 
