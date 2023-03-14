@@ -1,0 +1,74 @@
+@page
+@using Microsoft.AspNetCore.Mvc.Localization
+@using HRMapp2.Localization
+@using Volo.Abp.Users
+@model HRMapp2.Web.Pages.IndexModel
+@inject IHtmlLocalizer<HRMapp2Resource> L
+@inject ICurrentUser CurrentUser
+@section styles {
+    <abp-style src="/Pages/Index.css" />
+}
+@section scripts {
+    <abp-script src="/Pages/Index.js" />
+}
+
+<div class="mt-5 my-3 text-center">
+        <h3>Thông tin liên hệ</h3>
+        <p>Bạn có thể tìm thấy chúng tôi tại:</p>
+    </div>
+
+    <div class="card mt-4 mb-5">
+        <div class="card-body">
+
+            <div class="row text-center justify-content-md-center">
+                <div class="col-lg-2">
+                    <div class="p-3">
+                        <h6>
+                            <i class="fas fa-phone-alt d-block mb-3 fa- 2x text-secondary"></i> Hotline
+                            <a href="#" target="_blank" class="d-block mt-2 btn btn-sm btn-link">Contact <i class="fas fa-chevron-right"></i></a>
+                        </h6>
+                    </div>
+                </div>
+                <div class="col-lg-2 border-start">
+                    <div class="p-3">
+                        <h6>
+                            <i class="fas fa-mail-bulk d-block mb-3 fa- 2x text-secondary"></i> E-mail
+                            <a href="#" target="_blank" class="d-block mt-2 btn btn-sm btn-link">Contact <i class="fas fa-chevron-right"></i></a>
+                        </h6>
+                    </div>
+                </div>
+                <div class="col-lg-2 border-start">
+                    <div class="p-3">
+                        <h6>
+                            <i class="fab fa-facebook d-block mb-3 fa- 2x text-secondary"></i> Facebook
+                            <a href="#" target="_blank" class="d-block mt-2 btn btn-sm btn-link">Contact <i class="fas fa-chevron-right"></i></a>
+                        </h6>
+                    </div>
+                </div>
+                <div class="col-lg-2 border-start">
+                    <div class="p-3">
+                        <h6>
+                            <i class="fab fa-twitter d-block mb-3 fa- 2x text-secondary"></i> Twitter
+                            <a href="#" target="_blank" class="d-block mt-2 btn btn-sm btn-link">Contact <i class="fas fa-chevron-right"></i></a>
+                        </h6>
+                    </div>
+                </div>
+                <div class="col-lg-2 border-start">
+                    <div class="p-3">
+                        <h6>
+                            <i class="fab fa-telegram d-block mb-3 fa- 2x text-secondary"></i> Telegram
+                            <a href="#" target="_blank" class="d-block mt-2 btn btn-sm btn-link">Contact <i class="fas fa-chevron-right"></i></a>
+                        </h6>
+                    </div>
+                </div>
+                <div class="col-lg-2 border-start">
+                    <div class="p-3">
+                        <h6>
+                            <i class="fa fa-reddit d-block mb-3 fa- 2x text-secondary"></i> Reddit
+                            <a href="#" target="_blank" class="d-block mt-2 btn btn-sm btn-link">Contact <i class="fas fa-chevron-right"></i></a>
+                        </h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
