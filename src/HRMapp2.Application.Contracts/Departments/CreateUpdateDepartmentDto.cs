@@ -14,6 +14,7 @@ namespace HRMapp2.Departments
 		public DateTime ManagerStartDate { get; set; }
 
 		public string DepartmentLocation { get; set; }
+		public string[] EmployeeNames { get; set; }
 		
 	}
 }

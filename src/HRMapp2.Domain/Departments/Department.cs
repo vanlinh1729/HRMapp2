@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using HRMapp2.Employees;
-using HRMapp2.Projects;
 using JetBrains.Annotations;
 using Volo.Abp;
 using Volo.Abp.Auditing;
@@ -22,7 +21,7 @@ public class Department : AuditedAggregateRoot<Guid>, IMultiTenant
 	
     public string DepartmentLocation { get; set; }
     public ICollection<DepartmentProject> Projects { get; set; }
-    public ICollection<Employee> Employees { get; set; }
+    public ICollection<DepartmentEmployee> Employees { get; set; }
     private Department()
     {
 
@@ -35,7 +34,7 @@ public class Department : AuditedAggregateRoot<Guid>, IMultiTenant
         DepartmentLocation = departmentLocation;
 
         Projects = new Collection<DepartmentProject>();
-        Employees = new Collection<Employee>();
+        Employees = new Collection<DepartmentEmployee>();
     }
 
     //Methods:
@@ -49,41 +48,41 @@ public class Department : AuditedAggregateRoot<Guid>, IMultiTenant
         );
     }
     
-    public void AddProject(Guid projectId)
+    public void AddEmployee(Guid employeeId)
     {
-        Check.NotNull(projectId, nameof(projectId));
+        Check.NotNull(employeeId, nameof(employeeId));
 
-        if (IsInProject(projectId))
+        if (IsInEmployee(employeeId))
         {
             return;
         }
 
-        Projects.Add(new DepartmentProject(departmentId: Id, projectId));
+        Employees.Add(new DepartmentEmployee(departmentId: Id, employeeId));
     }
 
-    public void RemoveProject(Guid projectId)
+    public void RemoveEmployee(Guid employeeId)
     {
-        Check.NotNull(projectId, nameof(projectId));
+        Check.NotNull(employeeId, nameof(employeeId));
 
-        if (!IsInProject(projectId))
+        if (!IsInEmployee(employeeId))
         {
             return;
         }
 
-        Projects.RemoveAll(x => x.ProjectId == projectId);
+        Employees.RemoveAll(x => x.EmployeeId == employeeId);
     }
 
-    public void RemoveAllProjectsExceptGivenIds(List<Guid> projectId)
+    public void RemoveAllEmployeesExceptGivenIds(List<Guid> employeeIds)
     {
-        Check.NotNullOrEmpty(projectId, nameof(projectId));
+        Check.NotNullOrEmpty(employeeIds, nameof(employeeIds));
 
-        Projects.RemoveAll(x => !projectId.Contains(x.ProjectId));
+        Employees.RemoveAll(x => !employeeIds.Contains(x.EmployeeId));
     }
 
-    public void RemoveAllProjects()
+    public void RemoveAllEmployees()
     {
-        Projects.RemoveAll(x => x.DepartmentId == Id);
+        Employees.RemoveAll(x => x.DepartmentId == Id);
     }
 
-    private bool IsInProject(Guid projectId) => Projects.Any(x => x.ProjectId == projectId);
+    private bool IsInEmployee(Guid employeeId) => Employees.Any(x => x.EmployeeId == employeeId);
 }

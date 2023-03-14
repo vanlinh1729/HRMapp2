@@ -24,7 +24,7 @@ public class Employee : AuditedAggregateRoot<Guid>,IMultiTenant
     public int EmployeeWeeklyHours { get; set; }
 
     public ICollection<EmployeeProject> Projects { get; set; }
-    public Department Department { get; set; }
+    public ICollection<DepartmentEmployee> Departments { get; set; }
 
     private Employee()
     {

@@ -10,16 +10,31 @@ using Volo.Abp.Domain.Entities;
 using Volo.Abp.Application.Dtos;
 using HRMapp2.Projects;
 using HRMapp2.Employees;
+using HRMapp2.Permissions;
 
 namespace HRMapp2.Departments
 {
 	public class DepartmentAppService : CrudAppService<Department,DepartmentDto,Guid,PagedAndSortedResultRequestDto,CreateUpdateDepartmentDto,CreateUpdateDepartmentDto>, IDepartmentAppService
 	{
+		protected override string GetPolicyName { get; set; } = HRMapp2Permissions.Department.Default;
+		protected override string GetListPolicyName { get; set; } = HRMapp2Permissions.Department.Default;
+		protected override string CreatePolicyName { get; set; } = HRMapp2Permissions.Department.Create;
+		protected override string UpdatePolicyName { get; set; } = HRMapp2Permissions.Department.Update;
+		protected override string DeletePolicyName { get; set; } = HRMapp2Permissions.Department.Delete;
 		public IRepository<Department,Guid> _repository { get; set; }
-		public DepartmentAppService(IRepository<Department, Guid> repository) : base(repository)
+		public IRepository<Employee,Guid> _repositoryEmployee { get; set; }
+		public DepartmentAppService(IRepository<Department, Guid> repository,IRepository<Employee,Guid> repositoryEmployee) : base(repository)
 		{
 			_repository = repository;
+			_repositoryEmployee = repositoryEmployee;
 		} 
+		public async Task<ListResultDto<GetEmployeeDto>> GetEmployeeAsync()
+		{
+			var obj = await _repositoryEmployee.GetListAsync();
+			return new ListResultDto<GetEmployeeDto>( ObjectMapper.Map<List<Employee>,List<GetEmployeeDto>>(obj));
+		}
+
+		
 		/*
 		private readonly IDepartmentRepository _departmentRepository;
 		private readonly IRepository<Department,Guid> _departmentRepositorycustom;

@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using HRMapp2.Localization;
 using HRMapp2.MultiTenancy;
+using HRMapp2.Permissions;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Volo.Abp.Authorization.Permissions;
 using Volo.Abp.Identity.Web.Navigation;
@@ -45,7 +46,7 @@ public class HRMapp2MenuContributor : IMenuContributor
                 "/departments",
                 icon: "fas fa-building"
 
-            )
+            ).RequirePermissions(HRMapp2Permissions.Department.Default)
 
         );
 
@@ -56,7 +57,7 @@ public class HRMapp2MenuContributor : IMenuContributor
                 l["Nhân viên"],
                 "/employees",
                 icon: "fas fa-user-circle"
-            )
+            ).RequirePermissions(HRMapp2Permissions.Employee.Default)
 
         );
 
@@ -92,7 +93,7 @@ public class HRMapp2MenuContributor : IMenuContributor
                     name: "Recruitment.ProbationStaff",
                     displayName: l["Nhân viên thử việc"],
                     url: "~/")
-                ));
+                ).RequirePermissions(HRMapp2Permissions.Department.Default));
 
         context.Menu.AddItem(
             new ApplicationMenuItem("HRMapp.DayOffs", l["Xin nghỉ"],"", icon: "fas fa-file-alt")
@@ -116,7 +117,7 @@ public class HRMapp2MenuContributor : IMenuContributor
                     name: "DayOffs.PublicDayOff",
                     displayName: l["Ngày nghỉ chung"],
                     url: "~/")
-                ));
+                ).RequirePermissions(HRMapp2Permissions.Department.Default));
         context.Menu.AddItem(
             new ApplicationMenuItem("HRMapp.Timekeeping", l["Chấm công"],"", icon: "fas fa-business-time")
                 .AddItem(new ApplicationMenuItem(
@@ -134,7 +135,7 @@ public class HRMapp2MenuContributor : IMenuContributor
                     name: "Timekeeping.Config",
                     displayName: l["Cấu hình chấm công"],
                     url: "~/")
-                ));
+                ).RequirePermissions(HRMapp2Permissions.Department.Default));
 
         context.Menu.Items.Insert(
             7,
@@ -146,7 +147,7 @@ public class HRMapp2MenuContributor : IMenuContributor
                 
                 icon: "fas fa-table"
 
-            )
+            ).RequirePermissions(HRMapp2Permissions.Department.Default)
 
         );
         context.Menu.Items.Insert(
@@ -157,7 +158,7 @@ public class HRMapp2MenuContributor : IMenuContributor
                 "~/",
                     icon: "fas fa-pen"
 
-            )
+            ).RequirePermissions(HRMapp2Permissions.Department.Default)
 
         );
         context.Menu.Items.Insert(
@@ -167,8 +168,17 @@ public class HRMapp2MenuContributor : IMenuContributor
                 l["Bảo hiểm"],
                 "~/",
                 icon: "fas fa-pen"
-            )
+            ).RequirePermissions(HRMapp2Permissions.Department.Default)
 
+        );
+        context.Menu.Items.Insert(
+            10,
+            new ApplicationMenuItem(
+                "Insurances",
+                l["Liên hệ"],
+                "/Contacts",
+                icon: "fa fa-phone"
+            )
         );
 
        

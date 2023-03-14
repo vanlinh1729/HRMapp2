@@ -57,7 +57,7 @@ namespace HRMapp2.Employees
 			var dbContext = await GetDbContextAsync();
 
 			return (await GetDbSetAsync())
-				.Include(x=>x.Department)
+				.Include(x=>x.Departments)
 				.Join(dbContext.Set<Department>(),employee => employee.DepartmentId ,department => department.Id
 					,(employee, department) => new {employee, department})
 				.Select(x => new EmployeeWithDetails()

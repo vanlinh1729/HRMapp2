@@ -119,7 +119,9 @@ public class HRMapp2DbContext :
                 .HasMaxLength(ProjectConsts.MaxNameLength)
                 .IsRequired();
 
+            /*
             b.HasOne<Department>().WithMany(e=>e.Employees).HasForeignKey(x => x.DepartmentId).IsRequired();
+            */
             
         });
 
@@ -152,6 +154,22 @@ public class HRMapp2DbContext :
             b.HasOne<Project>().WithMany(x=>x.Departments).HasForeignKey(x => x.ProjectId).IsRequired();
 
             b.HasIndex(x => new { x.DepartmentId, x.ProjectId });
+        });
+        builder.Entity<DepartmentEmployee>(b =>
+        {
+            b.ToTable(HRMapp2Consts.DbTablePrefix + "DepartmentEmployees" + HRMapp2Consts.DbSchema);
+            b.ConfigureByConvention();
+
+            //define composite key
+            
+            b.HasKey(x => new { x.DepartmentId, x.EmployeeId });
+
+            //many-to-many configuration
+            
+            b.HasOne<Department>().WithMany(x=>x.Employees).HasForeignKey(dp=>dp.DepartmentId).IsRequired();
+            b.HasOne<Employee>().WithMany(x=>x.Departments).HasForeignKey(x => x.EmployeeId).IsRequired();
+
+            b.HasIndex(x => new { x.DepartmentId, x.EmployeeId });
         });
         
         builder.Entity<EmployeeProject>(b =>

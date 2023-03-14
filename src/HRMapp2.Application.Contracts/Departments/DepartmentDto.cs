@@ -15,6 +15,6 @@ namespace HRMapp2.Departments
 
 		public string DepartmentLocation { get; set; }
 		public string[] ProjectNames { get; set; }
-		/*public string[] EmployeeNames { get; set; }*/
+		public string[] EmployeeNames { get; set; }
 	}
 }

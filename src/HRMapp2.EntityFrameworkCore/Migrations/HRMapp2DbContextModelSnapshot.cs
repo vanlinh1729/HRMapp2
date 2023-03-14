@@ -82,6 +82,30 @@ namespace HRMapp2.Migrations
                     b.ToTable("AppDepartments", (string)null);
                 });
 
+            modelBuilder.Entity("HRMapp2.Departments.DepartmentEmployee", b =>
+                {
+                    b.Property<Guid>("DepartmentId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("EmployeeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("TenantId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("TenantId");
+
+                    b.HasKey("DepartmentId", "EmployeeId");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.HasIndex("DepartmentId", "EmployeeId");
+
+                    b.ToTable("AppDepartmentEmployees", (string)null);
+                });
+
             modelBuilder.Entity("HRMapp2.Departments.DepartmentProject", b =>
                 {
                     b.Property<Guid>("DepartmentId")
@@ -128,9 +152,6 @@ namespace HRMapp2.Migrations
                     b.Property<Guid>("DepartmentId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("DepartmentId1")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("EmployeeAddress")
                         .IsRequired()
                         .HasMaxLength(128)
@@ -174,10 +195,6 @@ namespace HRMapp2.Migrations
                         .HasColumnName("TenantId");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("DepartmentId");
-
-                    b.HasIndex("DepartmentId1");
 
                     b.ToTable("AppEmployees", (string)null);
                 });
@@ -1864,6 +1881,21 @@ namespace HRMapp2.Migrations
                     b.ToTable("AbpTenantConnectionStrings", (string)null);
                 });
 
+            modelBuilder.Entity("HRMapp2.Departments.DepartmentEmployee", b =>
+                {
+                    b.HasOne("HRMapp2.Departments.Department", null)
+                        .WithMany("Employees")
+                        .HasForeignKey("DepartmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HRMapp2.Employees.Employee", null)
+                        .WithMany("Departments")
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("HRMapp2.Departments.DepartmentProject", b =>
                 {
                     b.HasOne("HRMapp2.Departments.Department", null)
@@ -1877,21 +1909,6 @@ namespace HRMapp2.Migrations
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("HRMapp2.Employees.Employee", b =>
-                {
-                    b.HasOne("HRMapp2.Departments.Department", null)
-                        .WithMany("Employees")
-                        .HasForeignKey("DepartmentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("HRMapp2.Departments.Department", "Department")
-                        .WithMany()
-                        .HasForeignKey("DepartmentId1");
-
-                    b.Navigation("Department");
                 });
 
             modelBuilder.Entity("HRMapp2.Employees.EmployeeProject", b =>
@@ -2060,6 +2077,8 @@ namespace HRMapp2.Migrations
 
             modelBuilder.Entity("HRMapp2.Employees.Employee", b =>
                 {
+                    b.Navigation("Departments");
+
                     b.Navigation("Projects");
                 });
 

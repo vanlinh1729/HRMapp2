@@ -2,7 +2,7 @@ $(function () {
     var createModal = new abp.ModalManager(abp.appPath + 'Departments/CreateModal');
     var editModal = new abp.ModalManager(abp.appPath + 'Departments/EditModal');
     var viewModal = new abp.ModalManager(abp.appPath + 'Departments/ViewModal');
-
+    var viewEmployeeModal = new abp.ModalManager(abp.appPath + 'Departments/ViewEmployeeModal');
     var l = abp.localization.getResource('HRMapp2');
     var departmentService = hRMapp2.departments.department;
 
@@ -30,6 +30,12 @@ $(function () {
                                     text: l('Department:View'),
                                     action: function (data) {
                                         viewModal.open({ id: data.record.id });
+                                    }
+                                },
+                                {
+                                    text: l('Department:ViewEmployees'),
+                                    action: function (data) {
+                                        viewEmployeeModal.open({ id: data.record.id });
                                     }
                                 },
                                 {

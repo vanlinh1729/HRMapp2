@@ -14,4 +14,6 @@ public class DepartmentViewModel
         public DateTime ManagerStartDate { get; set; }
 
         public string DepartmentLocation { get; set; }
+
+        public string[] EmployeeNames { get; set; }
 }

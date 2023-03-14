@@ -16,22 +16,23 @@ namespace HRMapp2.Departments
 			PagedAndSortedResultRequestDto,
 			CreateUpdateDepartmentDto,
 			CreateUpdateDepartmentDto>
-	
-		{
-	
-			/*Task<PagedResultDto<DepartmentDto>> GetListAsync(DepartmentGetListInput input);
 
-			Task<DepartmentDto> GetAsync(Guid id);
+	{
+		Task<ListResultDto<GetEmployeeDto>> GetEmployeeAsync();
 
-			Task CreateAsync(CreateUpdateDepartmentDto input);
+		/*Task<PagedResultDto<DepartmentDto>> GetListAsync(DepartmentGetListInput input);
 
-			Task<DepartmentDto> UpdateAsync(Guid id, CreateUpdateDepartmentDto input);
+		Task<DepartmentDto> GetAsync(Guid id);
 
-			Task DeleteAsync(Guid id);
-			*/
+		Task CreateAsync(CreateUpdateDepartmentDto input);
 
-			
-	
+		Task<DepartmentDto> UpdateAsync(Guid id, CreateUpdateDepartmentDto input);
+
+		Task DeleteAsync(Guid id);
+		*/
+
+
+
 	}
 		
 		

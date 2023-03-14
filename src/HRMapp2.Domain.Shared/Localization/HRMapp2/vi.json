@@ -21,14 +21,16 @@
     "TableFilter": "Lọc môn học",
     "Enum:MonHoc0": "Môn xã hội",
     "Enum:MonHoc1": "Môn tự nhiên",
-    
+
     "Employee:Edit": "Sửa",
     "Employee:View": "Xem",
     "Employee:Delete": "Xoá",
     "Department:Edit": "Sửa",
+    "Department:ViewEmployees": "Xem danh sách nhân viên",
     "Department:View": "Xem",
     "Department:Delete": "Xoá",
     "Employee:Actions": "Hành động",
+    "Department:Actions": "Hành động",
     "Employee:Employee Name": "Tên nhân viên",
     "Employee:Department Name": "Tên phòng ban",
     "Employee Information": "Thông tin nhân viên",
@@ -45,8 +47,9 @@
     "Department Name": "Tên phòng ban",
     "Department Manager": "Quản lý phòng ban",
     "Manager Start Date": "Ngày bắt đầu quản lý",
-    "Department Location": "Vị trí phòng ban"
-    
-    
+    "Department Location": "Vị trí phòng ban",
+    "Permission:Create": "Tạo",
+    "Permission:Update": "Sửa",
+    "Permission:Delete": "Xoá"
   }
 }

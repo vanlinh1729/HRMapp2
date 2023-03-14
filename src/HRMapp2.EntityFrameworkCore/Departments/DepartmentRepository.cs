@@ -54,6 +54,7 @@ namespace HRMapp2.Departments
 			var dbContext = await GetDbContextAsync();
 
 			return (await GetDbSetAsync())
+				.Include(x=>x.Employees)
 				.Select(x => new DepartmentWithDetails()
 				{
 					Id = x.Id,
@@ -61,19 +62,17 @@ namespace HRMapp2.Departments
 					DepartmentManager = x.DepartmentManager,
 					DepartmentLocation = x.DepartmentLocation,
 					ManagerStartDate = x.ManagerStartDate,
-					CreationTime = x.CreationTime
-					/*EmployeeNames = (from departmentEmployee in x.department.Employees
-						join employee in dbContext.Set<Employee>() on departmentEmployee.DepartmentId equals employee.DepartmentId
-						select employee.EmployeeName).ToArray(),
-					ProjectNames = (from departmentProject in x.department.Projects
-						join project in dbContext.Set<Project>() on departmentProject.ProjectId equals project.Id
-						select project.ProjectName).ToArray()*/
+					CreationTime = x.CreationTime,
+					EmployeeNames = (from departmentEmployee in x.Employees
+						join employee in dbContext.Set<Employee>() on departmentEmployee.DepartmentId equals employee.Id
+						select employee.EmployeeName).ToArray()
+					
 				});
 		}
 
 		public override Task<IQueryable<Department>> WithDetailsAsync()
 		{
-			return base.WithDetailsAsync(x => x.Projects);
+			return base.WithDetailsAsync(x => x.Employees);
 		}
 
 

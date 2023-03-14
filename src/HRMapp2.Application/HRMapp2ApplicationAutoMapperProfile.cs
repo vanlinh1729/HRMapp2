@@ -28,7 +28,7 @@ public class HRMapp2ApplicationAutoMapperProfile : Profile
         CreateMap<Department, SelectDto>();
         CreateMap<Employee, SelectDto>();
         CreateMap<EmployeeWithDetails, EmployeeDto>();
-
+        CreateMap<Employee, GetEmployeeDto>();
 
     }
 }

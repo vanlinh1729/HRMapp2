@@ -18,38 +18,53 @@
                 <abp-tab title="@L["Department Information"].Value" class="mt-3">
                     @*<div id="department-information-wrapper" class="mt-3">*@
                       
-                       <div class="card-body pt-0">
-                                   <table class="table table-bordered">
-                                     <tr>
-                                       <th width="30%">@L["Department Name"]</th>
-                                         <td>@Model.DepartmentViewModel.DepartmentName</td>
-                                     </tr>
-                                     <tr>
-                                       <th width="30%">@L["Department Manager"]</th>
-                                         <td>@Model.DepartmentViewModel.DepartmentManager</td>
-                                     </tr>
-                                     <tr>
-                                       <th width="30%">@L["Manager Start Date"]</th>
-                                         <td>@Model.DepartmentViewModel.ManagerStartDate</td>
-                                     </tr>
-                                       <tr>
-                                           <th width="30%">@L["Department Location"]</th>
-                                           <td>@Model.DepartmentViewModel.DepartmentLocation</td>
-                                       </tr>
-                                   </table>
-                                 </div>
-                                                       
-                        
-                        @*<h3>Department Name: @Model.DepartmentViewModel.DepartmentName</h3>
-                        <h3>Department Manager: @Model.DepartmentViewModel.DepartmentManager</h3>
-                        <h3>Department ManagerStartDate: @Model.DepartmentViewModel.ManagerStartDate</h3>
-                        <h3>Department DepartmentLocation: @Model.DepartmentViewModel.DepartmentLocation</h3>*@
-                        @*@foreach(employee in @Model.)*@
-
-                    @*</div>*@
+                    <div class="card-body pt-0">
+                        <table class="table table-bordered">
+                            <tr>
+                                <th width="30%">@L["Department Name"]</th>
+                                <td>@Model.DepartmentViewModel.DepartmentName</td>
+                            </tr>
+                            <tr>
+                                <th width="30%">@L["Department Manager"]</th>
+                                <td>@Model.DepartmentViewModel.DepartmentManager</td>
+                            </tr>
+                            <tr>
+                                <th width="30%">@L["Manager Start Date"]</th>
+                                <td>@Model.DepartmentViewModel.ManagerStartDate</td>
+                            </tr>
+                            <tr>
+                                <th width="30%">@L["Department Location"]</th>
+                                <td>@Model.DepartmentViewModel.DepartmentLocation</td>
+                            </tr>
+                            @*<tr>
+                                <th width="30%">Employees</th>
+                                <td>
+                                    @foreach (var employeename in @Model.DepartmentViewModel.EmployeeNames)
+                                    {
+                                        <td>@employeename ,</td>
+                                    }
+                                </td>
+                                
+                            </tr>*@
+                        </table>
+                    </div>
                 </abp-tab>
+                
+                @*<abp-tab title="Employees">
+                        Danh sách nhân viên:
+                        <select style="height: 30px">
+                             @foreach (var e in @Model.Employees)
+                             {
+                                 <option disabled="disabled">Ten NV: @e</option>
+                             }
+    
+                        </select>
+                       $1$<abp-select asp-items="@Model.Departments" asp-for="Employee.DepartmentId" label="@L["Department"].Value">
+                           <option value="" disabled="disabled">Chọn phòng ban...</option>
+                           </abp-select>#1#
+
+                </abp-tab>*@
             </abp-tabs>
         </abp-modal-body>
-        @*<abp-modal-footer buttons="@(AbpModalButtons.Cancel|AbpModalButtons.Save)"></abp-modal-footer>*@
     </abp-modal>
 </form>

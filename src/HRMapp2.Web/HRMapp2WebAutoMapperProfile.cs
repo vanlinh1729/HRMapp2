@@ -33,6 +33,8 @@ namespace HRMapp2.Web
             CreateMap<EmployeeDto, EditViewModelEmployee>();
             CreateMap<EditViewModelEmployee, CreateUpdateEmployeeDto>();
             CreateMap<EmployeeDto, EmployeeViewModel>();
+            CreateMap<EmployeeDto, ViewEmployeeModel>();
+            
 
 
         }
